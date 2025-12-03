@@ -1,6 +1,6 @@
 #!/bin/env python3
 
-"""day1.py - Advent of Code 2025 - Day 1."""
+"""day2.py - Advent of Code 2025 - Day 2."""
 
 
 def parse(input: str):
