@@ -52,3 +52,14 @@ def range_merge(r1, r2):
     (s1, e1) = r1
     (s2, e2) = r2
     return (min(s1, s2), max(e1, e2))
+
+
+def product(nums):
+    p = 1
+    for n in nums:
+        p *= n
+    return p
+
+
+def transpose(grid):
+    return list(map(list, zip(*grid)))

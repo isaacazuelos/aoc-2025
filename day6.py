@@ -2,20 +2,10 @@
 
 """day6.py - Advent of Code 2025 - Day 6."""
 
+from util import *
 
 TEST = open("test/6.txt", "r").readlines()
 INPUT = open("input/6.txt", "r").readlines()
-
-
-def product(nums):
-    p = 1
-    for n in nums:
-        p *= n
-    return p
-
-
-def transpose(grid):
-    return list(map(list, zip(*grid)))
 
 
 def parse1(input):
