@@ -2,6 +2,8 @@
 
 """day5.py - Advent of Code 2025 - Day 5."""
 
+from util import *
+
 
 def parse(input: str):
     [fresh, available] = input.split("\n\n")
@@ -22,14 +24,9 @@ TEST = parse(open("test/5.txt", "r").read())
 INPUT = parse(open("input/5.txt", "r").read())
 
 
-def in_range(range, id):
-    (start, end) = range
-    return id >= start and id <= end
-
-
 def is_fresh(ranges, id):
     for r in ranges:
-        if in_range(r, id):
+        if range_contains(r, id):
             return True
     return False
 
@@ -42,23 +39,6 @@ def part1(input):
 print("part 1:", part1(INPUT))
 
 
-def contains(range, value):
-    (start, end) = range
-    return start <= value and value <= end
-
-
-def overlap(r1, r2):
-    (s1, e1) = r1
-    (s2, e2) = r2
-    return contains(r1, s2) or contains(r2, s1)
-
-
-def merge(r1, r2):
-    (s1, e1) = r1
-    (s2, e2) = r2
-    return (min(s1, s2), max(e1, e2))
-
-
 def merge_overlapping(ranges):
     # kind of nasty way of doing iterator invalidation, we replace both values
     # with the merged one, then dedup at the end. This means we end up checking
@@ -67,8 +47,8 @@ def merge_overlapping(ranges):
         for i2 in range(len(ranges)):
             r1 = ranges[i1]
             r2 = ranges[i2]
-            if overlap(r1, r2):
-                r3 = merge(r1, r2)
+            if range_overlap(r1, r2):
+                r3 = range_merge(r1, r2)
                 ranges[i1] = r3
                 ranges[i2] = r3
 

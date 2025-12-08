@@ -2,6 +2,8 @@
 
 """day4.py - Advent of Code 2025 - Day 4."""
 
+from util import *
+
 
 def parse(input):
     return list(map(list, input))
@@ -12,38 +14,6 @@ INPUT = parse(open("input/4.txt", "r").readlines())
 
 ROLL = "@"
 EMPTY = "."
-
-
-def at(grid, coord):
-    (x, y) = coord
-    return grid[y][x]
-
-
-def set(grid, coord, value):
-    (x, y) = coord
-    old = grid[y][x]
-    grid[y][x] = value
-    return old
-
-
-def coords(grid):
-    for x in range(len(grid[0])):
-        for y in range(len(grid)):
-            yield (x, y)
-
-
-def adjacent(coord, grid):
-    (x, y) = coord
-    for dx in [-1, 0, 1]:
-        for dy in [-1, 0, 1]:
-            if (
-                x + dx >= 0
-                and y + dy >= 0
-                and x + dx < len(grid[0])
-                and y + dy < len(grid)
-                and not (dx == 0 and dy == 0)
-            ):
-                yield (x + dx, y + dy)
 
 
 def is_accessible(grid, coord):
@@ -72,7 +42,7 @@ def remove_accessible_rolls(grid):
     for coord in coords(grid):
         if is_accessible(grid, coord):
             count += 1
-            set(grid, coord, EMPTY)
+            grid_set(grid, coord, EMPTY)
     return count
 
 
