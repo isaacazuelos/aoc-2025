@@ -1,6 +1,6 @@
 #!/bin/env python3
 
-"""day6.py - Advent of Code 2025 - Day 7."""
+"""day7.py - Advent of Code 2025 - Day 7."""
 
 from util import *
 

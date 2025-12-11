@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/bin/env
 
 """day6.py - Advent of Code 2025 - Day 6."""
 
